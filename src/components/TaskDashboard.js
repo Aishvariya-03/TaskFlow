@@ -21,12 +21,12 @@ function TaskDashboard({ username }) {
         description: task.description,
         category: task.category,
         priority: task.priority,
+        dueDate: task.dueDate,
         completed: false,
         createdAt: new Date().toISOString(),
       },
     ]);
   };
-
 
   const [categoryFilter, setCategoryFilter] = useState("All");
 

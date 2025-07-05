@@ -4,6 +4,7 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
   const [editedDescription, setEditedDescription] = useState(task.description);
+  
 
   const handleSave = () => {
     if (!editedTitle.trim()) return;
@@ -59,6 +60,7 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
               {task.priority}
             </span>
           </p>
+          <p>Due Date: {task.dueDate ? task.dueDate : "Not set"}</p>
 
           <button onClick={() => toggleComplete(task.id)}>
             {task.completed ? "Mark Pending" : "Mark Completed"}

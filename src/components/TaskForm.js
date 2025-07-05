@@ -6,6 +6,8 @@ function TaskForm({ addTask }) {
   const [error, setError] = useState("");
   const [category, setCategory] = useState("Work");
   const [priority, setPriority] = useState("Medium");
+  const [dueDate, setDueDate] = useState("");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,12 +21,21 @@ function TaskForm({ addTask }) {
       description,
       category,
       priority,
+      dueDate,
     });
     setTitle("");
     setDescription("");
     setCategory("Work");
     setPriority("Medium");
   };
+
+  <input
+    type="date"
+    value={dueDate}
+    onChange={(e) => setDueDate(e.target.value)}
+    style={{ margin: "10px 10px 10px 0" }}
+  />
+
 
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
