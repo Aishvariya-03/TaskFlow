@@ -89,9 +89,12 @@ taskflow/
 - Light Mode
 
 <img width="959" alt="Screenshot 2" src="https://github.com/user-attachments/assets/c2bdb58f-7709-40c3-a989-6c792cb15c46" />
+
 - Dark Mode
+  
 
 <img width="958" alt="Screenshot 3" src="https://github.com/user-attachments/assets/373a57fa-8896-4feb-94a0-400163bcd492" />
+
 - Filters in action  
 
 ---
