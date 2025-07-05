@@ -4,7 +4,7 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
   const [editedDescription, setEditedDescription] = useState(task.description);
-  
+  const [show, setShow] = useState(false);
 
   const handleSave = () => {
     if (!editedTitle.trim()) return;
@@ -16,8 +16,15 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
     setIsEditing(false);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 10);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div style={{
+    <div className={`task-item ${show ? "show" : ""} ${task.completed ? "completed" : ""}`} style={{
       border: "1px solid black",
       margin: "10px 0",
       padding: "10px",
