@@ -83,7 +83,7 @@ taskflow/
 
 ## 📸 Screenshots
 
-*You can insert screenshots here showing:*  
+
 <img width="959" alt="Screenshot 1" src="https://github.com/user-attachments/assets/8222decd-4de6-424e-b005-a302694c13e8" />
 - Light Mode
 
