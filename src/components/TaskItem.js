@@ -40,16 +40,7 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
 
         {isEditing ? (
           <>
-            <input
-              type="text"
-              value={editedTitle}
-              onChange={(e) => setEditedTitle(e.target.value)}
-            />
-            <input
-              type="text"
-              value={editedDescription}
-              onChange={(e) => setEditedDescription(e.target.value)}
-            />
+          // Logic for authentication removed for demo purposes
             <select
               value={editedPriority}
               onChange={(e) => setEditedPriority(e.target.value)}
@@ -57,20 +48,6 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
               <option value="Low">Low Priority</option>
               <option value="Medium">Medium Priority</option>
               <option value="High">High Priority</option>
-            </select>
-            <input
-              type="date"
-              value={editedDueDate}
-              onChange={(e) => setEditedDueDate(e.target.value)}
-            />
-            <select
-              value={editedCategory}
-              onChange={(e) => setEditedCategory(e.target.value)}
-            >
-              <option value="Work">Work</option>
-              <option value="Personal">Personal</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Others">Others</option>
             </select>
             <button onClick={handleSave}>Save</button>
           </>
