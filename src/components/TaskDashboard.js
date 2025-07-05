@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 
-function TaskDashboard({ username }) {
+function TaskDashboard({ username, logout }) {
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks ? JSON.parse(storedTasks) : [];
@@ -52,6 +52,23 @@ function TaskDashboard({ username }) {
       )
     );
   };
+
+  {username ? (
+    <TaskDashboard
+      username={username}
+      logout={() => {
+        setUsername("");
+        localStorage.removeItem("username");
+      }}
+    />
+  ) : (
+    <Login setUsername={setUsername} />
+  )}
+
+  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+    <h2>Welcome, {username}!</h2>
+    <button onClick={logout}>Logout</button>
+  </div>
 
   return (
     <div style={{ margin: "10px 0" }}>
