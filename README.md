@@ -75,10 +75,9 @@ taskflow/
 
 ---
 
-## 🌐 Deployment
+## 🔗 Live Demo
 
-- Ready for deployment on Netlify or similar platforms  
-- Run `npm run build` for production build  
+[https://task-flow-tracker-project.netlify.app/](https://task-flow-tracker-project.netlify.app/)
 
 ---
 
