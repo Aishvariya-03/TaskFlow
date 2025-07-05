@@ -1,23 +1,23 @@
 import { useState } from "react";
 
 function Login({ setUsername }) {
-  const [name, setName] = useState("");
+  const [input, setInput] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    if (!name.trim()) return;
-    setUsername(name);
-    localStorage.setItem("username", name);
+    if (input.trim()) {
+      setUsername(input.trim());
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-      <h3>Enter your name to continue:</h3>
+    <form onSubmit={handleLogin}>
+      <h2>Login</h2>
       <input
         type="text"
-        placeholder="Your name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter username"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
       />
       <button type="submit">Login</button>
     </form>

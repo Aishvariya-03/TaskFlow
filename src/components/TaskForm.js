@@ -3,11 +3,10 @@ import { useState } from "react";
 function TaskForm({ addTask }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [error, setError] = useState("");
-  const [category, setCategory] = useState("Work");
   const [priority, setPriority] = useState("Medium");
+  const [category, setCategory] = useState("Work");
   const [dueDate, setDueDate] = useState("");
-
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,57 +18,66 @@ function TaskForm({ addTask }) {
     addTask({
       title,
       description,
-      category,
       priority,
       dueDate,
+      category,
     });
     setTitle("");
     setDescription("");
-    setCategory("Work");
     setPriority("Medium");
+    setCategory("Work");
+    setDueDate("");
   };
-
-  <input
-    type="date"
-    value={dueDate}
-    onChange={(e) => setDueDate(e.target.value)}
-    style={{ margin: "10px 10px 10px 0" }}
-  />
-
 
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
       <h3>Add Task</h3>
 
-      <input
-        type="text"
-        placeholder="Task title (required)"
-        value={title}
-        onChange={(e) => {
-          setTitle(e.target.value);
-          setError("");
-        }}
-        style={{ marginRight: "10px" }}
-      />
-      {error && (
-        <p style={{ color: "red", margin: 0, fontSize: "0.85rem" }}>
-          {error}
-        </p>
-      )}
+      {/* Title & Description Inputs Side by Side */}
+      <div style={{ display: "flex", gap: "30px", marginBottom: "5px" }}>
+        <div style={{ flex: 1 }}>
+          <input
+            type="text"
+            placeholder="Task title (required)"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+              setError("");
+            }}
+            style={{ width: "100%" }}
+          />
+          {error && (
+            <p style={{ color: "red", margin: 0, fontSize: "0.85rem" }}>
+              {error}
+            </p>
+          )}
+        </div>
 
-      <input
-        type="text"
-        placeholder="Description (optional)"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        style={{ marginBottom: "10px" }}
-      />
+        <input
+          type="text"
+          placeholder="Description (optional)"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          style={{ flex: 1 }}
+        />
+      </div>
+
+      {/* Priority Dropdown */}
+      <select
+        value={priority}
+        onChange={(e) => setPriority(e.target.value)}
+        style={{ marginRight: "10px" }}
+      >
+        <option value="Low">Low Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="High">High Priority</option>
+      </select>
 
       {/* Category Dropdown */}
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        style={{ margin: "10px 10px 10px 0" }}
+        style={{ marginRight: "10px" }}
       >
         <option value="Work">Work</option>
         <option value="Personal">Personal</option>
@@ -77,17 +85,15 @@ function TaskForm({ addTask }) {
         <option value="Others">Others</option>
       </select>
 
-      {/* Priority Dropdown */}
-      <select
-        value={priority}
-        onChange={(e) => setPriority(e.target.value)}
-        style={{ margin: "10px 10px 10px 0" }}
-      >
-        <option value="Low">Low Priority</option>
-        <option value="Medium">Medium Priority</option>
-        <option value="High">High Priority</option>
-      </select>
+      {/* Due Date Input */}
+      <input
+        type="date"
+        value={dueDate}
+        onChange={(e) => setDueDate(e.target.value)}
+        style={{ marginRight: "10px" }}
+      />
 
+      {/* Submit Button */}
       <button type="submit">Add Task</button>
     </form>
   );
