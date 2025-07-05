@@ -27,7 +27,7 @@ const sampleTasks = [
   },
 ];
 
-function TaskDashboard({ username, logout }) {
+function TaskDashboard({ username }) {
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks && JSON.parse(storedTasks).length > 0
@@ -75,27 +75,7 @@ function TaskDashboard({ username, logout }) {
     );
   };
 
-  const filteredTasks = tasks.filter((task) => {
-    const matchesFilter =
-      filter === "All"
-        ? true
-        : filter === "Completed"
-        ? task.completed
-        : !task.completed;
-
-    const matchesCategory =
-      categoryFilter === "All"
-        ? true
-        : categoryFilter === "Uncategorized"
-        ? !task.category || task.category === ""
-        : task.category === categoryFilter;
-
-    const matchesSearch =
-      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      task.description.toLowerCase().includes(searchTerm.toLowerCase());
-
-    return matchesFilter && matchesCategory && matchesSearch;
-  });
+ // NOTE: Some parts of the logic have been removed for confidentiality.
 
   return (
     <div>
