@@ -3,10 +3,36 @@ import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 import TaskFilter from "./TaskFilter";
 
+// Declare sampleTasks at the TOP
+const sampleTasks = [
+  {
+    id: 1,
+    title: "Complete React assignment",
+    description: "Build a task tracker application",
+    completed: false,
+    createdAt: "2024-01-15T10:00:00Z",
+    priority: "Medium",
+    category: "Work",
+    dueDate: "2024-01-20",
+  },
+  {
+    id: 2,
+    title: "Review JavaScript concepts",
+    description: "Go through ES6+ features",
+    completed: true,
+    createdAt: "2024-01-14T15:30:00Z",
+    priority: "High",
+    category: "Personal",
+    dueDate: "2024-01-18",
+  },
+];
+
 function TaskDashboard({ username, logout }) {
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem("tasks");
-    return storedTasks ? JSON.parse(storedTasks) : [];
+    return storedTasks && JSON.parse(storedTasks).length > 0
+      ? JSON.parse(storedTasks)
+      : sampleTasks;
   });
 
   const [filter, setFilter] = useState("All");
