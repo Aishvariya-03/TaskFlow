@@ -19,11 +19,21 @@ function TaskDashboard({ username }) {
         id: Date.now(),
         title: task.title,
         description: task.description,
+        category: task.category,
         completed: false,
         createdAt: new Date().toISOString(),
       },
     ]);
   };
+
+  const [categoryFilter, setCategoryFilter] = useState("All");
+
+  const filteredTasks = tasks.filter((task) => {
+    const matchesCategory =
+      categoryFilter === "All" ? true : task.category === categoryFilter;
+
+    return matchesCategory;
+  });
 
   const updateTask = (updatedTask) => {
     setTasks(tasks.map((task) => (task.id === updatedTask.id ? updatedTask : task)));
@@ -42,7 +52,7 @@ function TaskDashboard({ username }) {
   };
 
   return (
-    <div>
+    <div style={{ margin: "10px 0" }}>
       <h2>Welcome, {username}!</h2>
       <TaskForm addTask={addTask} />
       <TaskList
@@ -51,8 +61,27 @@ function TaskDashboard({ username }) {
         deleteTask={deleteTask}
         toggleComplete={toggleComplete}
       />
+
+      <label style={{ marginRight: "10px" }}>Filter by Category:</label>
+      <select
+        value={categoryFilter}
+        onChange={(e) => setCategoryFilter(e.target.value)}
+      >
+        <option value="All">All Categories</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Others">Others</option>
+      </select>
     </div>
   );
 }
+
+
+
+
+
+
+
 
 export default TaskDashboard;

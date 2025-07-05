@@ -4,6 +4,8 @@ function TaskForm({ addTask }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
+  const [category, setCategory] = useState("Work");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,10 +17,23 @@ function TaskForm({ addTask }) {
     addTask({
       title,
       description,
+      category,
     });
     setTitle("");
     setDescription("");
   };
+
+  <select
+    value={category}
+    onChange={(e) => setCategory(e.target.value)}
+    style={{ margin: "10px 0" }}
+  >
+    <option value="Work">Work</option>
+    <option value="Personal">Personal</option>
+    <option value="Shopping">Shopping</option>
+    <option value="Others">Others</option>
+  </select>
+
 
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
