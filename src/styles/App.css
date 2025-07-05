@@ -36,3 +36,27 @@ button:hover {
   background-color: lightgray;
 }
 
+.app {
+  background-color: #fff;
+  color: #000;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark {
+  background-color: #222;
+  color: #fff;
+}
+
+.app.dark .task-item {
+  background-color: #444;
+}
+
+.app.dark .task-item.completed {
+  background-color: #335533;
+}
+
+.app.dark button:hover {
+  background-color: #444;
+}

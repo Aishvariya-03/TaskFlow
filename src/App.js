@@ -5,9 +5,15 @@ import "./styles/App.css";
 
 function App() {
   const [username, setUsername] = useState(localStorage.getItem("username") || "");
+  const [darkMode, setDarkMode] = useState(false);
+
+  <button onClick={() => setDarkMode(!darkMode)} style={{ marginBottom: "10px" }}>
+    {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+  </button>
+
 
   return (
-    <div className="app">
+    <div className={darkMode ? "app dark" : "app"}>
       {username ? (
         <TaskDashboard username={username} />
       ) : (
