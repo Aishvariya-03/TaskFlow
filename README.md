@@ -109,3 +109,7 @@ taskflow/
 ## 📝 Author
 
 Aishvariya Senaiyar  
+
+#⚠️ This version of the project is shared for evaluation purposes only.
+Certain implementation details and proprietary logic have been intentionally removed or disabled.
+Full access can be provided upon further discussion.
