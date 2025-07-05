@@ -20,11 +20,13 @@ function TaskDashboard({ username }) {
         title: task.title,
         description: task.description,
         category: task.category,
+        priority: task.priority,
         completed: false,
         createdAt: new Date().toISOString(),
       },
     ]);
   };
+
 
   const [categoryFilter, setCategoryFilter] = useState("All");
 

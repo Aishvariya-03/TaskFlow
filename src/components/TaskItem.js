@@ -43,6 +43,23 @@ function TaskItem({ task, updateTask, deleteTask, toggleComplete }) {
           <p>Created: {new Date(task.createdAt).toLocaleString()}</p>
           <p>Status: {task.completed ? "Completed ✅" : "Pending ⏳"}</p>
           <p>Category: {task.category}</p>
+          <p>
+            Priority:{" "}
+            <span
+              style={{
+                color:
+                  task.priority === "High"
+                    ? "red"
+                    : task.priority === "Low"
+                    ? "green"
+                    : "orange",
+                fontWeight: "bold",
+              }}
+            >
+              {task.priority}
+            </span>
+          </p>
+
           <button onClick={() => toggleComplete(task.id)}>
             {task.completed ? "Mark Pending" : "Mark Completed"}
           </button>
